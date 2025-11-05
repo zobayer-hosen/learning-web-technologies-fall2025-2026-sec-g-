@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All HTML Form</title>
+</head>
+<body>
+
+    <h3>1. Name</h3>
+    <form>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="user_name">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <hr> <h3>2. Email</h3>
+    <form>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="user_email" >
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr> <h3>3. Gender</h3>
+    <form>
+        <label>Gender</label>
+        <fieldset>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+        </fieldset>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr> <h3>4. Date of Birth</h3>
+    <form>
+        <label>Date of Birth</label>
+        <fieldset>
+            <label for="dd">dd</label>
+            <label for="mm">mm</label>
+            <label for="yyyy">yyyy</label>
+            <br>
+            
+            <input type="text" id="dd" name="day" size="2" maxlength="2"> /
+            <input type="text" id="mm" name="month" size="2" maxlength="2"> /
+            <input type="text" id="yyyy" name="year" size="4" maxlength="4">
+        </fieldset>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+  
+</body>
+</html>
