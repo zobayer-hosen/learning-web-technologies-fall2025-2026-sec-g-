@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Validation</title>
+</head>
+<body>
+
+    <h1>Name Validation</h1>
+    
+    <form onsubmit="return test()">
+    
+        Name: 
+        <input type="text" id="name" name="name" value="" onblur="validateName()" />
+        
+        <input type="submit" value="Submit" />
+        
+        <p id="nameError"></p>
+
+    </form>
+
+    <script>
+        // --- Helper Function ---
+        // This function checks if a character is a letter
+        // using only methods from your 'Basic String Methods' image.
+        function isLetter(char) {
+            // A letter's lower case is different from its upper case
+            // (e.g., "a" != "A").
+            // A symbol or number is the same (e.g., "." == ".").
+            return char.toLowerCase() != char.toUpperCase();
+        }
+
+        // --- Main Validation Function (for onblur) ---
+        function validateName() {
+            // Get the elements we need
+            let nameInput = document.getElementById('name');
+            let nameError = document.getElementById('nameError');
+            
+            // Get the text value from the input box
+            let name = nameInput.value;
+
+            // --- Rule 1: Cannot be empty ---
+            if (name == "") {
+                nameError.innerHTML = "Name cannot be empty.";
+                nameError.style.color = "red";
+                return; // Stop checking
+            }
+
+            // --- Rule 4: Must start with a letter ---
+            // We use name[0] (which is 'String.[]' in your image)
+            // and our new 'isLetter' function.
+            if (!isLetter(name[0])) {
+                nameError.innerHTML = "Name must start with a letter.";
+                nameError.style.color = "red";
+                return; // Stop checking
+            }
+
+            let wordCount = 0;
+            let inWord = false; // A flag to track if we are inside a word
+
+            // --- Check Rule 2 and Rule 3 in one loop ---
+            // We use 'name.length' (which is 'String length' in your image)
+            for (let i = 0; i < name.length; i++) {
+                // We use name[i] (which is 'String.[]' in your image)
+                let char = name[i];
+
+                // --- Rule 3: Check for allowed characters ---
+                // We check if the character is NOT a letter, NOT a dot,
+                // NOT a dash, and NOT a space.
+                if (!isLetter(char) && char != '.' && char != '-' && char != ' ') {
+                    nameError.innerHTML = "Can only contain letters, dots, dashes, and spaces.";
+                    nameError.style.color = "red";
+                    return; // Stop checking
+                }
+
+                // --- Rule 2: Count words ---
+                // We count words by looking for the start of a new word.
+                if (char == ' ') {
+                    inWord = false; // We hit a space, so we are not in a word
+                } else {
+                    // This is a non-space character
+                    if (inWord == false) {
+                        // We were not in a word, but now we are.
+                        // This means we found the start of a new word.
+                        wordCount++;
+                        inWord = true; // Set the flag
+                    }
+                }
+            }
+
+            // --- Final check for Rule 2: At least two words ---
+            if (wordCount < 2) {
+                nameError.innerHTML = "Must contain at least two words.";
+                nameError.style.color = "red";
+                return; // Stop checking
+            }
+
+            // --- Success ---
+            // If we get all the way here, all rules passed.
+            // Clear any old error messages.
+            nameError.innerHTML = "";
+        }
+
+
+        // --- Form Submission Function (for onsubmit) ---
+        function test() {
+            // Get the elements
+            let nameInput = document.getElementById('name');
+            let nameError = document.getElementById('nameError');
+
+            // Run the validation function one last time, in case
+            // the user clicks "Submit" without clicking away first.
+            validateName();
+
+            // Check if the validation function put an error message
+            // in our 'p' tag. If it did, we stop the form.
+            if (nameError.innerHTML !== "") {
+                return false; // Stop form submission
+            } else {
+                // If there's no error AND the box isn't empty, submit
+                if (nameInput.value != "") {
+                     return true; // Allow form submission
+                } else {
+                    // This catches if the user submits an empty form
+                    return false;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
