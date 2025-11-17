@@ -52,6 +52,9 @@ function calculate(){
   if (previousValue === "" || curValue === "" || operator === "") {
         return;
     }
+    let num1 = parseFloat(previousValue);
+    let num2 = parseFloat(curValue);
+    let result = 0;
     switch (operator) {
         case "+":
             result = add(num1, num2);
