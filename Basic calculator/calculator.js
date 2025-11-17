@@ -39,6 +39,12 @@ function clearDisplay(){
 function add(num1, num2) {
     return num1 + num2;
 }
+function subtract(num1,num2){
+  return num1 - num2
+}
+function multiply(num1, num2) {
+    return num1 * num2;
+}
 function calculate(){
   if (previousValue === "" || curValue === "" || operator === "") {
         return;
@@ -47,6 +53,12 @@ function calculate(){
         case "+":
             result = add(num1, num2);
             break;
+        case "-":
+          result = subtract(num1,num2);
+          break; 
+          case "*":
+            result = multiply(num1,num2)
+            break;   
         default:
             return;
     }
