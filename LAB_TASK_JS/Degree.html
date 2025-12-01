@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Degree</h3>
+
+<input type="checkbox" id="ssc" value="SSC"> SSC <br>
+<input type="checkbox" id="hsc" value="HSC"> HSC <br>
+<input type="checkbox" id="bsc" value="BSC"> BSC <br><br>
+
+<button onclick="Degree()">Submit</button>
+
+<p id="msg"></p>
+
+<script>
+function Degree() {
+    let ssc = document.getElementById("ssc").checked;
+    let hsc = document.getElementById("hsc").checked;
+    let bsc = document.getElementById("bsc").checked;
+    let msg = document.getElementById("msg");
+
+    if (!ssc && !hsc && !bsc) {
+        msg.innerHTML = "Please select at least one degree";
+        return;
+    }
+
+    msg.innerHTML = "Degree selected successfully!";
+}
+</script>
+
+</body>
+</html>
