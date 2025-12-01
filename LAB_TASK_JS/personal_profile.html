@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Profile</title>
+
+</head>
+
+<body>
+
+<h2>PERSON PROFILE</h2>
+
+<form onsubmit="return validateForm();">
+
+<table border="1" cellpadding="5">
+
+<tr>
+    <td>Name</td>
+    <td><input type="text" id="name"></td>
+</tr>
+
+<tr>
+    <td>Email</td>
+    <td><input type="text" id="email"></td>
+</tr>
+
+<tr>
+    <td>Gender</td>
+    <td>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+    </td>
+</tr>
+
+<tr>
+    <td>date of birth</td>
+    <td>
+        <input type="text" id="dd" size="2" placeholder="dd">
+        <input type="text" id="mm" size="2" placeholder="mm">
+        <input type="text" id="yy" size="4" placeholder="yyyy">
+    </td>
+</tr>
+
+<tr>
+    <td>blood group</td>
+    <td>
+        <select id="blood">
+            <option>select</option>
+            <option>A+</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>Degree</td>
+    <td>
+        <input type="checkbox" name="degree" value="SSC"> SSC
+        <input type="checkbox" name="degree" value="HSC"> HSC
+        <input type="checkbox" name="degree" value="BSc"> BSc
+        <input type="checkbox" name="degree" value="MSc"> MSc
+    </td>
+</tr>
+
+<tr>
+    <td>Photo</td>
+    <td><input type="file" id="photo"></td>
+</tr>
+
+<tr>
+    <td colspan="2">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </td>
+</tr>
+
+</table>
+
+</form>
+<script>
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let gender = document.querySelector("input[name='gender']:checked");
+            let dd = document.getElementById("dd").value;
+            let mm = document.getElementById("mm").value;
+            let yy = document.getElementById("yy").value;
+            let blood = document.getElementById("blood").value;
+            let degre = document.querySelectorAll("input[name='degree']:checked");
+            let photo = document.getElementById("photo").value;
+            if (name === "") {
+                alert("Enter Name");
+                return false;
+            }
+
+            if (email === "") {
+                alert("Enter valid Email");
+                return false;
+            }
+
+            if (!gender) {
+                alert("Select Gender");
+                return false;
+            }
+
+            if (dd === "" || mm === "" || yy === "") {
+                alert("Enter Date of Birth");
+                return false;
+            }
+
+            if (blood === "") {
+                alert("Select Blood Group");
+                return false;
+            }
+
+            if (degre.length === 0) {
+                alert("Select at least one Degree");
+                return false;
+            }
+
+            if (photo === "") {
+                alert("Upload a Photo");
+                return false;
+            }
+            alert("Form Submitted Successfully!");
+            return true;
+        }
+    </script>
+
+</body>
+</html>
